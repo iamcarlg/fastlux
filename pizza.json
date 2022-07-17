@@ -1,0 +1,108 @@
+[
+    {
+        "name" : "Chicken Pizza",
+        "picture" : "",
+        "imageURL" : "../images/client1.jpg",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 9.99
+    },
+    {
+        "name" : "Chicken Pizza",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 12.99
+    },
+    {
+        "name" : "Chicken Pizza",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 15.99
+    },
+
+    {
+        "name" : "Hawai Pizza",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 9.99
+    },
+
+    {
+        "name" : "Hawai Pizza",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 12.99
+    },
+
+    {
+        "name" : "Hawai Pizza",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 15.99
+    },
+
+    {
+        "name" : "Hawai Pizza",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 9.99
+    },
+
+    {
+        "name" : "Margherita Pizza",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 12.99
+    },
+
+    {
+        "name" : "Margherita Pizza",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : 15.99
+    },
+    
+    {
+        "name" : "BBQ Burger",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : "9.99"
+    },
+
+    {
+        "name" : "BBQ Burger",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : "12.99"
+    },
+
+    {
+        "name" : "BBQ Burger",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Pizza",
+        "description" : "It's a wonderful Pizza",
+        "price" : "15.99"
+    }
+
+]

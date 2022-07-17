@@ -1,0 +1,275 @@
+
+<%- include ("../partials/head.ejs") %>
+
+<body>
+
+  <!-- HEADER ADMIN CONTAINER START-->
+  
+  <%- include("../partials/header-admin") %>
+
+  <!-- END HEADER ADMIN CONTAINER -->
+
+  <% if(userInfoUpdated.length> 0 ) {%>
+    <div class="alert alert-success">
+      <%= userInfoUpdated %>
+    </div>
+
+    <% } %>
+
+      <br>
+<div class="container emp-profile">
+      <div class="row" style = "display: flex; justify-content: space-around;">
+        
+              <div class="col-md-4">
+                  <div class="profile-img">
+                      <img src="<%= user.thumbnail%>" width = "500" height = "500" alt=""/>
+                  </div>
+                  <br>
+              </div>
+
+              <div class="row hide-form">
+                  <div class="col-md-8">
+                      <div class="tab-content profile-tab" id="myTabContent">
+                          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <label>User Id</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <p><%= user.googleId%></p>
+                                          </div>
+                                      </div>
+
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><%= user.username%></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                          <label>User Role</label>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <p><%= user.role%></p>
+                                      </div>
+                                  </div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <label>Email</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <p><%= user.email%></p>
+                                          </div>
+                                      </div>
+
+                                      <% if(user.role == "casual") { %>
+
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <label>Address</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <p><%= user.address %><br><%= user.zipCode %></p>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                            <label>City</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><%= user.city %></p>
+                                        </div>
+                                    </div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <label>Country</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                              <p><%= user.country %></p>
+                                          </div>
+                                      </div>
+
+                                      <% } %>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <% if(user.role == "casual") { %>
+                    <button class = "update_btn" onclick="update_data();">Edit User</button>
+                    <% } %>
+                </div>
+
+
+              </div>
+              
+        </div>
+            
+                <% if( user.role == "casual") { %>
+
+                  <div class = "update_info"style="display : none">
+      
+                    <form action = "/casual/updateuser/<%=user._id %>?_method=PATCH" method = "POST" enctype="multipart/form-data">
+                      <h1>Update the shipping info</h1>
+                    
+                    <div class="mb-3 mt-3">
+                      <input type="text" class="form-control" id="Country" name = "country" placeholder="Country" value="<%= user.country %>" required>
+                      </div>
+                      <br>
+                      <div class="mb-3">
+                          <input type="text" class="form-control" id="city" name = "city" placeholder="City" value="<%= user.city %>" required>
+                      </div>
+                      <br>
+                      <div class="mb-3">
+                          <input type="text" class="form-control" id="address" name = "address" placeholder="Address" value="<%= user.address %>" required>
+                      </div>
+                      <br>
+                      <div class="mb-3">
+                        <input type="number" class="form-control" id="zipcode" name = "zipCode" placeholder="Zip-code" value="<%= user.zipCode %>" required>
+                    </div>
+                    <br>
+                    <!-- <button type="submit" class="btn btn-primary">Update info</button>
+                     -->
+      
+                     <center>
+      
+                       <div class="col-md-6">
+                           <button type = "submit">Update info</button>
+                       </div>
+                       
+                     </center>
+                  </form>
+          
+                  </div>
+
+                <% } %>
+
+  </div>
+
+<style>
+.emp-profile{
+/* padding: 3%; */
+margin-top: 3%;
+margin-bottom: 3%;
+border-radius: 0.5rem;
+background: #fff;
+}
+.profile-img{
+text-align: center;
+}
+.profile-img img{
+width: 300px;
+height: 300px;
+
+border: 2px solid gray;
+border-radius: 30%;
+
+}
+
+.profile-head h5{
+color: #333;
+}
+.profile-head h6{
+color: #0062cc;
+}
+.profile-edit-btn{
+border: none;
+width: 100%;
+padding: 2%;
+font-weight: 600;
+color: #6c757d;
+cursor: pointer;
+}
+.profile-head .nav-tabs{
+margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+font-weight:600;
+border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+border: none;
+border-bottom:2px solid #0062cc;
+}
+.profile-work{
+padding: 14%;
+margin-top: -15%;
+}
+.profile-work p{
+font-size: 12px;
+color: #818182;
+font-weight: 600;
+margin-top: 10%;
+}
+.profile-work a{
+text-decoration: none;
+color: #495057;
+font-weight: 600;
+font-size: 14px;
+}
+.profile-work ul{
+list-style: none;
+}
+.profile-tab label{
+font-weight: 600;
+}
+.profile-tab p{
+font-weight: 600;
+color: #0062cc;
+}
+</style>
+
+<script>
+  $(function () {
+    setTimeout(function () {
+      $('.alert').slideUp(500);
+    }, 3000);
+  });
+
+</script>
+
+<script>
+
+  const update_btn = document.querySelector('.update_btn');
+  const update_info = document.querySelector('.update_info');
+  const hide_form =  document.querySelector('.hide-form');
+  const update_data = () =>{
+
+    if(update_info.style.display = 'none')
+      update_info.style.display = 'inline';
+      update_btn.style.display = 'none';
+      hide_form.style.display = 'none';
+  }
+
+  // Handling the delete Operation
+  function deleteProduct(){
+
+    const trashcan = document.querySelector('a.delete');
+      trashcan.addEventListener('click', (e) => {
+        
+        const endpoint = `/admin/users/delete/${event.target.dataset.doc}`;
+        fetch(endpoint, {
+          method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => window.location.href = data.redirect)
+        .catch(err => console.log(err));
+      });
+  }
+
+</script>
+
+<script>
+  $(function () {
+    setTimeout(function () {
+      $('.alert').slideUp(500);
+    }, 3000);
+  });
+
+</script>
+
+      </body>
