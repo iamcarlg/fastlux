@@ -1,0 +1,55 @@
+[
+    {
+        "name" : "Spaghetti Pasta",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Pasta",
+        "description" : "Spaghetti pasta",
+        "price" : "9.99"
+    },
+
+    {
+        "name" : "Spaghetti Pasta",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Pasta",
+        "description" : "Spaghetti pasta",
+        "price" : "12.99"
+    },
+
+    {
+        "name" : "Spaghetti Pasta",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Pasta",
+        "description" : "Spaghetti pasta",
+        "price" : "15.99"
+    },
+
+    {
+        "name" : "Lasagne Pasta",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Pasta",
+        "description" : "Spaghetti pasta",
+        "price" : "9.99"
+    },
+
+    {
+        "name" : "Lasagne Pasta",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Pasta",
+        "description" : "Spaghetti pasta",
+        "price" : "12.99"
+    },
+
+    {
+        "name" : "Lasagne Pasta",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Pasta",
+        "description" : "Spaghetti pasta",
+        "price" : "15.99"
+    }
+]

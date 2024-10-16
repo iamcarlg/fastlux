@@ -1,0 +1,9 @@
+# This below files won't be pushed to the git repository
+
+./keys.js
+./reminder.txt
+
+\node_modules
+
+./docker
+.\vscode

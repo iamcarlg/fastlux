@@ -1,0 +1,5 @@
+==============   Databases   ==============
+
+1) I have to remember to change the network access parameter to another IP Address in production
+
+2) 

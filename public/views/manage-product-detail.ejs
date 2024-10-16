@@ -1,0 +1,542 @@
+
+<%- include ("../partials/head.ejs") %>
+
+<body>
+
+  <!-- HEADER ADMIN CONTAINER START-->
+
+
+  <div class="header-admin-container container">
+    <div class="logo">
+  
+      <% if(user && user.role == "admin") { %>
+  
+        <span class = "navbar-logo">
+            <a href="/admin/dashboard">
+            Fastlux
+          </a>
+          </span>
+  
+      <% } else {%>
+  
+        <a href="/casual/dashboard">
+          <span class = "navbar-logo">
+            Fastlux
+          </span>
+        </a>
+  
+      <%} %>
+      
+    </div>
+  
+    <div class = "profile" style = "display: flex; justify-content: space-around;">
+  
+      <% if(user && user.role == "casual") {%>
+        <div class = "cart-view">
+
+          <span class="bag-counter" style = "padding:0 3px; font-size:1.3rem; color:blue; font-weight: 700;">
+            <%= session.cart ? session.cart.totalQty : 0 %>
+          </span>
+          <a href="/casual/cart" style = "padding-right:10px;">
+            <i class="fa-solid fa-bag-shopping fa-lg" aria-hidden="true" style='font-size:30px; color:black;' title = "Cart"></i>
+          </a>
+    
+        </div>
+        <% } %>
+  
+        <div class = "profile-view">
+
+          <% if(user && user.role == "casual"){ %>
+            
+            <a href="/casual/profile">
+                <i class="fa-solid fa-user fa-lg" style='font-size:30px; color:black; margin-top : 13px;' title = "Profile"></i>
+            </a>
+    
+          <% } else {%>
+    
+            <a href="/admin/profile" title = "Profile">
+              <i class="fa-solid fa-user fa-lg" style='font-size:30px; color:black; margin-top : 13px;'></i>
+            </a>
+    
+            <% } %>
+        </div>
+        
+      <div class = "logout">
+        <a href="/auth/logout" title = "Sign out">
+          <!-- <i class="fa fa-sign-out" style='font-size:30px; color:black; padding-left: 10px; margin-top : 5px;'></i> -->
+          <i class="fa fa-sign-out-alt" style='font-size:30px; color:black; padding-left: 10px; margin-top : 5px;'></i>
+        </a>
+      </div>
+    </div>
+  
+    </div>
+  
+    <% if(user && user.role === "casual") { %>
+  
+      <center><h1 style="font-family:Arial, Helvetica, sans-serif;">Dashboard</h1></center>
+    
+     <% } else{ %>
+  
+      <center><h1 style="font-family:Arial, Helvetica, sans-serif;">Admin Dashboard</h1></center>
+    
+     <% }%>
+    <br>
+    
+    <!-- NAVBAR START -->
+  
+    <nav class = "navbar navbar-light bg-dark">
+        <ul>
+          
+          <% if(user.role === "casual") { %>
+  
+            <li><a href="/casual/dashboard">My Menu</a></li>
+            <li><a href="/casual/order-history">My Order History</a></li> 
+            <li><a href="/casual/about">About</a></li>
+            <li><a href="/casual/contactUs">Contact us</a></li>
+  
+          <% } else{ %>
+  
+            <li><a href="/admin/dashboard">Orders List</a></li>              
+            <li><a href="/admin/users">Users List</a></li>
+            <li><a href="/admin/reviews">Reviews List</a></li>
+            <li><a href="/admin/products">Products List</a></li>
+            <li><a href="/admin/addProduct">Add Product</a></li>
+    
+            <% }%>
+        </ul>
+    
+    </nav>
+  
+    <br>
+    <!-- NAVBAR END -->
+  
+  
+    <style>
+      .header-admin-container{
+        margin:10px auto;
+        width : 100%; 
+        height : 5vh;
+        background:#fff; 
+        z-index:1;
+        display: flex;
+        justify-content: space-between;
+        
+      }
+  
+      .navbar-logo{
+        font-family: 'Dancing Script', cursive;
+        font-size:2rem;
+        font-weight: bolder;
+        text-decoration: none;
+  
+      }
+  
+      .navbar-logo a{
+        color:black;
+        text-decoration: none;
+  
+      }
+      .profile{
+        display:flex;
+  
+      }
+  
+      .profile .profile-view{
+        padding-right:10px;
+  
+      }
+  
+      div .navbar-logo{
+        padding-top:10px; 
+        padding-left:10px;
+        color:black;
+  
+      }
+  
+      .admin-space-navbar{
+        text-align: center;
+        width : 85%;
+        height : 7vh;
+        background-color: #2471A3;
+        margin: 10px auto;
+      }
+  
+      nav ul{
+        margin: 10px auto;
+        
+      }
+      nav ul li{
+        
+        display: inline-block;
+        list-style: none;
+        text-decoration: none;
+  
+        margin-top : 10px;
+        margin-left:60px;
+  
+      }
+  
+      nav ul li a{
+        color: #fff;
+        margin-top : 10px;
+        margin-bottom : 10px;
+      }
+  
+      
+      nav ul li a:hover{
+        color: #fff;
+        text-decoration: none;
+      }
+  
+      nav ul li a:visited{
+        color: #fff;
+        text-decoration: none;
+      }
+  
+      .admin-space{
+            width: 100%;
+            height : 92vh;
+  
+            background-color:rgba(226, 220, 220, 0.9);
+  
+            padding-top : 20px;
+      }
+  
+      .addProduct{
+            width : 50%;
+            margin: 15px auto;          
+  
+        }
+  
+        .addProduct textarea{
+            height : 100px;
+        }
+  
+    </style>
+    
+  <!-- END HEADER ADMIN CONTAINER -->
+
+  <% if(reviewStatus.length> 0 ) {%>
+    <div class="alert alert-success">
+      <%= reviewStatus %>
+    </div>
+  
+    <% } %>
+
+
+  <div class="container bootstrap snippets bootdey container-product" style = "display: flex; justify-content : space-around; margin-top : 30px; margin-right: auto; margin-left:auto;">
+    <div class="row">
+        <div class="col-sm-6 push-bit">
+          <img src="/uploads/resized/<%= product.picture%>" width = "400" height = "400" alt="" style = "border-radius: 10%; margin : 0 auto;" class=""/>            </div>
+        </div>
+        <div class="col-sm-6 push-bit">
+            <div class="clearfix">
+                <div class="pull-right">
+                    <span class="h2"><strong id = "variant-price">€ <%= product.smallPrice %></strong></span>
+                </div>
+                <span class="h4">
+                    <strong class="text-success"><%= product.name %></strong><br />
+                    <small><%= product.category %></small>
+                </span>
+            </div>
+            <hr />
+            <p>
+                <%= product.description %>
+            </p>
+            <hr />
+
+            <% if(user.role == "casual"){ %>
+              
+              <form class="form-inline push-bit text-right" style = "display: flex; flex-direction: column;">
+                  <select id="ecom-addcart-size" name="variant" class="form-control variant" size="1" style = "width : 60%; margin-right:310px;" onchange="add_cart_active()">
+                      
+                      <option selected>Choose the variant</option>
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="big">Big</option>
+                  </select>
+                  
+                  <a href = "#" class = "add-cart-link"><button type="button" class="btn btn-dark btn-info cart-btn" title = "Add to Cart" disabled>Add to Cart</button></a>
+  
+              </form>
+            <% } else {%>
+
+              <a class = "delete"><button data-doc = "<%= product._id %>" onclick="deleteProduct();">Remove product</button></a>
+
+              <% } %>
+        </div>
+    </div>
+  </div>
+  
+  <% if(user.role == "casual") { %>
+
+    <!-- DISPLAYING THE REVIEWS -->
+    <div class = "review-overview">
+
+      <div class="reviews-heading">
+        <center><h1>Reviews</h1></center>
+    </div>
+    <div class="table-responsive-xs">
+        <table class="table review-table">
+            <thead class="review-thead" style = "text-align: center;">
+  
+                <tr>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Posted by:</th>
+                    <th scope="col">Date</th>
+  
+                </tr>
+            </thead>
+  
+            <tbody id="table-body">
+                <% product.reviews.forEach(review=> { %>
+                    <tr>
+                        <td>
+                            <p>
+                                <%= review.comment %>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= review.rating %>/5
+                            </p>
+                        </td>
+  
+                        <td>
+                            <p>
+                                <%= review.author.username %>
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <%= moment(review.date).format("YYYY-MM-DD HH:mm") %>
+                            </p>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+
+  <!-- POSTING THE REVIEWS -->
+    <div class="review-area">
+                               
+      <div class="write-review-div">
+          <div class="review-form-title">
+       
+              <center><h3 class="review-h3">Review this menu</h3></center>
+          </div>
+          <div class="review-form">
+              <form action="/casual/product/<%=product._id %>/review/post" method="POST">
+                  <div class="review-inputs">
+                      <textarea class="form-control rounded-0" name="comment"
+                          placeholder="Write a review for this menu " rows="4" required></textarea>
+                      <select class="form-control rating-btn rounded-0" name="rating" required>
+                          
+                          <option selected disabled>How do you rate this menu ?</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          </select>
+                  </div>
+                  <div class="submit-review-div">
+                    <center>                      
+                      <input type="submit" label="Submit" value="Submit review" title = "Submit review"
+                      class="review-submit-btn">
+                    </center>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+    <% } %>
+
+
+  <style>
+    body{
+      margin-top:20px;
+  }
+  
+  img{
+    width : 350px;
+  }
+  .cart-btn{
+    float: left;
+    color:#fff; 
+    margin-top : 20px;
+    margin-right : auto;
+    margin-left: 0; 
+    width : 100%; 
+    height : 6vh;
+  }
+
+  .push-bit {
+      margin-bottom: 30px;
+  }
+
+  .review-overview{
+    
+    margin-top: 5vh;
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+  .review-area{
+
+    margin-top: 15vh;
+    margin-left:auto; 
+    margin-right:auto;
+
+  }
+
+  .review-form textarea{
+    width :60%;
+    margin-bottom : 10px;
+    margin-right : auto;
+    margin-left : auto;
+
+  }
+
+  .review-form select{
+    width : 60%;
+    margin-top : 10px;
+    margin-right : auto;
+    margin-left : auto;
+
+  }
+
+  .submit-review-div input{
+    width : 60%;
+    margin : 10px auto;
+
+  }
+
+  table td {
+    text-align: center;
+  }
+
+  @media screen and (max-width : 800px) {
+    .container-product{
+        display: flex; 
+        flex-direction: column;
+    }
+
+    .review-overview{
+      margin-top : 10vh;
+  }
+
+    .cart-btn{
+      padding : 5px;
+      float: left;
+      width : 200px;
+      margin-top: 10px;
+      margin-left :auto;
+  }
+
+    .variant{
+      height : 10vh;
+    }
+  }
+  </style>
+  
+  <script>
+
+      function add_cart_active(){
+
+          var choose_variant = document.getElementById('ecom-addcart-size');
+          var variant_price = document.getElementById('variant-price');
+          var choose_variant_value = choose_variant.options[choose_variant.selectedIndex].text;
+
+          const add_toCart = document.querySelector('.btn-info');
+          const add_cart_link = document.querySelector(".add-cart-link");
+
+          if(choose_variant_value == 'Small' || choose_variant_value == 'Medium' || choose_variant_value == 'Big'){
+              add_toCart.removeAttribute('disabled');
+
+              if(choose_variant_value == "Small"){
+                variant_price.innerHTML = "€ <%= product.smallPrice %>"
+                add_cart_link.setAttribute('href', '/casual/cart/add/<%= product._id %>/small')
+                
+
+              }else if(choose_variant_value == "Medium"){
+                variant_price.innerHTML = "€ <%= product.mediumPrice %>"
+                add_cart_link.setAttribute('href', '/casual/cart/add/<%= product._id %>/medium')
+                
+              }else if(choose_variant_value == "Big"){
+                variant_price.innerHTML = "€ <%= product.bigPrice %>"
+                add_cart_link.setAttribute('href', '/casual/cart/add/<%= product._id %>/big')
+
+              }
+          }else{
+            add_toCart.setAttribute('disabled', '');
+          }
+        
+    }
+
+      
+  </script>
+
+<script>
+  // Handling the delete Operation
+
+  function deleteProduct(){
+
+    let text = "Do you want to delete this product ?";
+
+    if(confirm(text) == true){
+
+      const trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener('click', (e) => {
+          
+          const endpoint = `/admin/products/delete/${event.target.dataset.doc}`;
+          fetch(endpoint, {
+            method: 'DELETE',
+          })
+          .then(response => response.json())
+          .then(data => window.location.href = data.redirect)
+          .catch(err => console.log(err));
+        });
+
+    }
+  }
+
+</script>
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- isotope js -->
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+  <script>
+    $(function () {
+      setTimeout(function () {
+        $('.alert').slideUp(500);
+      }, 3000);
+    });
+  
+  </script>
+</body>
+
+</html>

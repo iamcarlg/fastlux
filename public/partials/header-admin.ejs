@@ -1,0 +1,208 @@
+
+<div class="header-admin-container container">
+  <div class="logo">
+
+    <% if(user && user.role == "admin") { %>
+
+      <span class = "navbar-logo">
+          <a href="/admin/dashboard">
+          Fastlux
+        </a>
+        </span>
+
+    <% } else {%>
+
+      <a href="/casual/dashboard">
+        <span class = "navbar-logo">
+          Fastlux
+        </span>
+      </a>
+
+    <%} %>
+    
+  </div>
+
+  <div class = "profile" style = "display: flex; justify-content: space-around;">
+
+    <% if(user && user.role == "casual") {%>
+      <div class = "cart-view">
+
+        <span class="bag-counter" style = "padding:0 3px; font-size:1.3rem; color:blue; font-weight: 700;">
+          <%= session.cart ? session.cart.totalQty : 0 %>
+        </span>
+        <a href="/casual/cart" style = "padding-right:10px;">
+          <i class="fa-solid fa-bag-shopping fa-lg" aria-hidden="true" style='font-size:30px; color:black;' title = "Cart"></i>
+        </a>
+  
+      </div>
+      <% } %>
+
+    <div class = "profile-view">
+
+      <% if(user && user.role == "casual"){ %>
+        
+        <a href="/casual/profile">
+            <i class="fa-solid fa-user fa-lg" style='font-size:30px; color:black; margin-top : 13px;' title = "Profile"></i>
+        </a>
+
+      <% } else {%>
+
+        <a href="/admin/profile" title = "Profile">
+          <i class="fa-solid fa-user fa-lg" style='font-size:30px; color:black; margin-top : 13px;'></i>
+        </a>
+
+        <% } %>
+    </div>
+
+    <div class = "logout">
+      <a href="/auth/logout" title = "Sign out">
+        <!-- <i class="fa fa-sign-out" style='font-size:30px; color:black; padding-left: 10px; margin-top : 5px;'></i> -->
+        <i class="fa-brands fa-solid fa-arrow-right-from-bracket fa-lg" style='font-size:30px; color:black; padding-left: 10px; margin-top : 13px;'></i>
+      </a>
+    </div>
+  </div>
+
+  </div>
+
+  <% if(user && user.role === "casual") { %>
+
+    <center><h1 style="font-family:Arial, Helvetica, sans-serif;">Dashboard</h1></center>
+  
+   <% } else{ %>
+
+    <center><h1 style="font-family:Arial, Helvetica, sans-serif;">Admin Dashboard</h1></center>
+  
+   <% }%>
+  <br>
+  
+  <!-- NAVBAR START -->
+
+  <nav class = "navbar navbar-light bg-dark">
+      <ul>
+        
+        <% if(user.role === "casual") { %>
+
+          <li><a href="/casual/dashboard">My Menu</a></li>
+          <li><a href="/casual/order-history">My Order History</a></li> 
+          <li><a href="/casual/about">About</a></li>
+          <li><a href="/casual/contactUs">Contact us</a></li>
+
+        <% } else{ %>
+
+          <li><a href="/admin/dashboard">Orders List</a></li>              
+          <li><a href="/admin/users">Users List</a></li>
+          <li><a href="/admin/reviews">Reviews List</a></li>
+          <li><a href="/admin/products">Products List</a></li>
+          <li><a href="/admin/addProduct">Add Product</a></li>
+  
+          <% }%>
+      </ul>
+  
+  </nav>
+
+  <br>
+  <!-- NAVBAR END -->
+
+
+  <style>
+    .header-admin-container{
+      margin:10px auto;
+      width : 100%; 
+      height : 5vh;
+      background:#fff; 
+      z-index:1;
+      display: flex;
+      justify-content: space-between;
+      
+    }
+
+    .navbar-logo{
+      font-family: 'Dancing Script', cursive;
+      font-size:2rem;
+      font-weight: bolder;
+      text-decoration: none;
+
+    }
+
+    .navbar-logo a{
+      color:black;
+      text-decoration: none;
+
+    }
+    .profile{
+      display:flex;
+
+    }
+
+    .profile .profile-view{
+      padding-right:10px;
+
+    }
+
+    div .navbar-logo{
+      padding-top:10px; 
+      padding-left:10px;
+      color:black;
+
+    }
+
+    .admin-space-navbar{
+      text-align: center;
+      width : 85%;
+      height : 7vh;
+      background-color: #2471A3;
+      margin: 10px auto;
+    }
+
+    nav ul{
+      margin: 10px auto;
+      
+    }
+    nav ul li{
+      
+      display: inline-block;
+      list-style: none;
+      text-decoration: none;
+
+      margin-top : 10px;
+      margin-left:60px;
+
+    }
+
+    nav ul li a{
+      color: #fff;
+      margin-top : 10px;
+      margin-bottom : 10px;
+    }
+
+    
+    nav ul li a:hover{
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav ul li a:visited{
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .admin-space{
+          width: 100%;
+          height : 92vh;
+
+          background-color:rgba(226, 220, 220, 0.9);
+
+          padding-top : 20px;
+    }
+
+    .addProduct{
+          width : 50%;
+          margin: 15px auto;          
+
+      }
+
+      .addProduct textarea{
+          height : 100px;
+      }
+
+  </style>

@@ -1,0 +1,11 @@
+[
+    {
+        "name" : "Tomatoe Fries",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Fries",
+        "description" : "It's a wonderful Fries set",
+        "price" : "9.99"
+    }
+
+]

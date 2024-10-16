@@ -1,0 +1,92 @@
+
+<%- include ("../partials/head.ejs") %>
+
+<body>
+    
+  <!-- HEADER ADMIN CONTAINER START-->
+  
+  <%- include("../partials/header-admin") %>
+
+  <!-- END HEADER ADMIN CONTAINER -->
+
+      <div class ="addProduct">
+          
+        <form method = "post" action = "/admin/addproduct" enctype="multipart/form-data">
+            <center><h1 style="font-family:Arial, Helvetica, sans-serif;">Add a Menu</h1></center>
+            <div class="mb-3 mt-3">
+            <input type="text" class="form-control" id="name" name = "name" placeholder="Name" value="<%= product.name %>" required>
+            </div>
+
+            <div class="form-group mb-3">
+
+              <select class="form-control" id="sel2" name = "category" value="<%= product.category %>" required>
+              <option selected value = ''>Select a category</option>
+                <option>Pizza</option>
+                <option>Burger</option>
+                <option>Pasta</option>
+                <option>Fries</option>
+              </select>
+
+          </div>
+
+          <div class="mb-3">
+              <input type="text" class="form-control" id="smallPrice" name = "smallPrice" placeholder="Small variant price" value="<%= product.smallPrice %>" required>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" class="form-control" id="mediumPrice" name = "mediumPrice" placeholder="Medium variant price" value="<%= product.mediumPrice %>" required>
+        </div>
+
+
+        <div class="mb-3">
+          <input type="text" class="form-control" id="bigPrice" name = "bigPrice" placeholder="Big variant price" value="<%= product.bigPrice %>" required>
+      </div>
+            <div class="mb-3">
+              <input type="file" class="form-control" id="picture" name = "picture" placeholder="Description" value="<%= product.picture %>" required>
+          </div>
+
+            <div class="mb-3">
+                <textarea type="text" class="form-control" id="description" name = "description" placeholder="Description" value="<%= product.description %>" required></textarea>
+            </div>
+     
+            <center>
+              <button type="submit" class="btn btn-dark">Add Menu</button>
+            </center>
+      </form>
+     
+      </div>
+
+    </center>
+
+
+ </div>
+  <!-- jQery -->
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="../js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- isotope js -->
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <!-- custom js -->
+  <script src="../js/custom.js"></script>
+
+  <script>
+    $(function () {
+      setTimeout(function () {
+        $('.alert').slideUp(500);
+      }, 3000);
+    });
+
+  </script>
+  
+
+</body>
+
+</html>

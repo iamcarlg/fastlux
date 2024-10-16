@@ -1,0 +1,73 @@
+[
+    {
+        "name" : "BBQ Burger",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious BBQ Burger",
+        "price" : "9.99"
+    },
+
+    {
+        "name" : "BBQ Burger",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious BBQ Burger",
+        "price" : "12.99"
+    },
+
+    {
+        "name" : "BBQ Burger",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious BBQ Burger",
+        "price" : "15.99"
+    },
+
+    {
+        "name" : "Whooper Burger",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious Whooper Burger",
+        "price" : "9.99"
+    },
+
+    {
+        "name" : "Whooper Burger",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious Whooper Burger",
+        "price" : "12.99"
+    },
+
+    {
+        "name" : "Whooper Burger",
+        "variant" : "Big",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious Whooper Burger",
+        "price" : "15.99"
+    },
+
+    {
+        "name" : "Double Cheese Bacon Burger",
+        "variant" : "Small",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious Double Cheese Bacon Burger",
+        "price" : "9.99"
+    },
+
+    {
+        "name" : "Double Cheese Bacon Burger",
+        "variant" : "Medium",
+        "imageURL" : "",
+        "category" : "Burger",
+        "description" : "Delicious Double Cheese Bacon Burger",
+        "price" : "12.99"
+    }
+]
