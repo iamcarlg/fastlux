@@ -4,7 +4,6 @@
   "description": "A express.js application that allows users to order food",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "node server.js"
   },
@@ -23,7 +22,7 @@
     "express-session": "^1.17.2",
     "method-override": "^3.0.0",
     "moment": "^2.29.3",
-    "mongodb": "^6.9.0",
+    "mongodb": "^4.17.2",
     "mongoose": "^6.2.10",
     "multer": "^1.4.4",
     "nodemailer": "^6.7.3",
